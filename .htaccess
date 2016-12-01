@@ -1,0 +1,20 @@
+# Evitar que se muestre el contenido de las carpetas
+Options -Indexes
+
+# Pagina de 404 not found
+ErrorDocument 404 /asciito/404.html
+
+# Prohibir acceso a .htaccess
+<Files ~ “^.*\.([Hh][Tt][Aa])”>
+order allow,deny
+deny from all
+satisfy all
+</Files>
+
+RewriteEngine on
+
+# Prohibir acceso a carpeta bd
+RewriteRule ^bd.*$ /asciito/ [R=301,L]
+
+# Reglas para la API
+RewriteRule ^api/traindata$ /asciito/php/run.php?fn=cargar_traindata [QSA,L]

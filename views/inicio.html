@@ -1,0 +1,19 @@
+<div class="main">
+	<img src="img/buddy.png"/>
+
+	<div class="msg">
+		{{ phrase }}
+	</div> <br><br>
+
+	<div class="teach_panel" ng-init="init_mat()" ng-show="ready">
+		<div class="matriz">
+			<button ng-repeat="i in range(0, dim_mat*dim_mat)" class="{{ teach.mat[i] == 1 ? 'active' : '' }}" ng-click="teach.mat[i] = teach.mat[i] == 0 ? 1 : 0">&nbsp;</button>
+		</div>
+
+		<input type="text" placeholder="¿qué letra es esa?" ng-model="teach.letter" maxlength=1 ng-pattern="/[0-9]{1}/" /><br><br>
+		<button type="submit" ng-disabled="teach.letter.length == 0" ng-click="teach()">enseñar</button>
+		<button type="submit" ng-click="ask()">preguntar</button><br>
+		<span ng-click="reset_mat()" style="cursor: pointer;">Limpiar</span><br><br><br><br>
+		<span>(*) Sé diferenciar solamente números :(</span>
+	</div>
+</div>
